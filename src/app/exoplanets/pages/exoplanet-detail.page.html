@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>{{ exoplanet?.kepoi_name }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-card *ngIf="exoplanet">
+      <ion-card-header>
+        <ion-card-title>{{ exoplanet.kepoi_name }}</ion-card-title>
+        <ion-card-subtitle>{{ exoplanet.koi_disposition | uppercase }}</ion-card-subtitle>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <div class="exoplanet-details">
+          <p><strong>Disposition:</strong> {{ exoplanet.koi_disposition }}</p>
+          <p><strong>Period:</strong> {{ exoplanet.koi_period }} days</p>
+          <p><strong>Radius:</strong> {{ exoplanet.koi_prad }} Earth Radii</p>
+          <p><strong>Temperature:</strong> {{ exoplanet.koi_teq }} K</p>
+          
+          <ion-item *ngIf="exoplanet.koi_smass">
+            <ion-label>
+              <strong>Stellar Mass:</strong> {{ exoplanet.koi_smass }} Solar Masses
+            </ion-label>
+          </ion-item>
+          
+          <ion-item *ngIf="exoplanet.koi_steff">
+            <ion-label>
+              <strong>Stellar Effective Temperature:</strong> {{ exoplanet.koi_steff }} K
+            </ion-label>
+          </ion-item>
+          
+          <ion-item *ngIf="exoplanet.koi_slogg">
+            <ion-label>
+              <strong>Stellar Surface Gravity:</strong> {{ exoplanet.koi_slogg }} log(g)
+            </ion-label>
+          </ion-item>
+          
+          <ion-item *ngIf="exoplanet.koi_period_err1 && exoplanet.koi_period_err2">
+            <ion-label>
+              <strong>Period:</strong> ±{{ exoplanet.koi_period_err1 }} days to ±{{ exoplanet.koi_period_err2 }} days
+            </ion-label>
+          </ion-item>
+        </div>
+  
+        <ion-button expand="full" color="primary" (click)="goBack()">Back to Exoplanets</ion-button>
+        <ion-button expand="full" color="secondary" (click)="saveExoplanet()">Save to Favorites</ion-button>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card *ngIf="!exoplanet">
+      <ion-card-header>
+        <ion-card-title>No data available</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>No details available for the selected exoplanet.</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>

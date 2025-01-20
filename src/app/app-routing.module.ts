@@ -1,21 +1,34 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ExoplanetDetailPage } from './exoplanets/pages/exoplanet-detail.page';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'apod',
     pathMatch: 'full'
   },
+  {
+    path: 'apod',
+    loadChildren: () => import('./apod/apod.module').then(m => m.ApodPageModule),
+  },
+  {
+    path: 'exoplanets',
+    loadChildren: () => import('./exoplanets/exoplanets.module').then(m => m.ExoplanetsPageModule),
+  },
+  {
+    path: 'saved',
+    loadChildren: () => import('./saved/saved.module').then(m => m.SavedModule),
+  },
+  {
+    path: 'exoplanet-details',  // URL сегмент
+    component: ExoplanetDetailPage,  // Страница, которую нужно загрузить
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })

@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Exoplanets</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterExoplanets()" debounce="500" showClearButton="true"></ion-searchbar>
+
+    <ion-list style="max-height: 100%; overflow-y: auto;" *ngFor="let exoplanet of filteredExoplanets">
+        <ion-item (click)="openExoplanetDetails(exoplanet)">
+            <ion-label>
+                <h2>{{ exoplanet.kepoi_name }}</h2>
+                <p>Disposition: {{ exoplanet.koi_disposition }}</p>
+                <p>Period: {{ exoplanet.koi_period }} days</p>
+                <p>Radius: {{ exoplanet.koi_prad }} Earth Radii</p>
+                <p>Temperature: {{ exoplanet.koi_teq }} K</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+  </ion-content>
+

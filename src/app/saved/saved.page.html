@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Saved Exoplanets</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let exoplanet of savedExoplanets; let i = index">
+        <ion-label>
+          <h2>{{ exoplanet.kepoi_name }}</h2>
+          <p>{{ exoplanet.koi_disposition }}</p>
+        </ion-label>
+        <ion-button fill="clear" color="danger" (click)="removeExoplanet(i)">Remove</ion-button>
+      </ion-item>
+    </ion-list>
+  
+    <ion-footer *ngIf="savedExoplanets.length === 0">
+      <ion-toolbar>
+        <ion-title >No saved exoplanets</ion-title>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-content>

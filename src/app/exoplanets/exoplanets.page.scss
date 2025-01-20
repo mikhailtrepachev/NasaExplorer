@@ -1,0 +1,9 @@
+ion-content {
+    --overflow: auto;
+    height: 100%;
+  }
+  
+  ion-list {
+    max-height: 100%;
+    overflow-y: auto;
+  }
