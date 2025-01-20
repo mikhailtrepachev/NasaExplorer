@@ -21,8 +21,8 @@ const routes: Routes = [
     loadChildren: () => import('./saved/saved.module').then(m => m.SavedModule),
   },
   {
-    path: 'exoplanet-details',  // URL сегмент
-    component: ExoplanetDetailPage,  // Страница, которую нужно загрузить
+    path: 'exoplanet-details', 
+    component: ExoplanetDetailPage,
   }
 ];
 

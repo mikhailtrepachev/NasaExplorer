@@ -23,7 +23,7 @@ export class ExoplanetDetailPage implements OnInit {
               this.exoplanet = JSON.parse(params['exoplanet']);
             }
           });
-    }
+        }
 
     goBack() {
         this.navCtrl.back();
@@ -39,5 +39,5 @@ export class ExoplanetDetailPage implements OnInit {
         } else {
           alert('This exoplanet is already saved.');
         }
-      }
+    }
 }

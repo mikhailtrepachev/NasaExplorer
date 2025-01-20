@@ -13,8 +13,8 @@ import { NavController } from "@ionic/angular";
 
 export class ExoplanetsPage implements OnInit { 
     exoplanets: any[] = [];
-    filteredExoplanets: any[] = [];  // Добавим переменную для отфильтрованных экзопланет
-    searchQuery: string = ''; // Для хранения ввода поиска
+    filteredExoplanets: any[] = [];
+    searchQuery: string = '';
   
     constructor(
       private nasaService: NasaService, 
@@ -31,20 +31,20 @@ export class ExoplanetsPage implements OnInit {
         this.nasaService.getExoplanets().subscribe(
             (data: any) => {
               this.exoplanets = data;
-              this.filteredExoplanets = [...this.exoplanets]; // Начальное значение для отфильтрованного массива
+              this.filteredExoplanets = [...this.exoplanets];
             },
             (error) => {
-              console.error('Ошибка при загрузке экзопланет:', error);           
+              console.error('Error while loading exoplanets: ', error);           
             }
           );
     }
     
     filterExoplanets(): void {
         if (this.searchQuery.trim() === '') {
-            this.filteredExoplanets = [...this.exoplanets];  // Если поисковый запрос пустой, показываем все
+            this.filteredExoplanets = [...this.exoplanets];
         } else {
             this.filteredExoplanets = this.exoplanets.filter(exoplanet => 
-                exoplanet.kepoi_name.toLowerCase().includes(this.searchQuery.toLowerCase())  // Фильтруем по имени экзопланеты
+                exoplanet.kepoi_name.toLowerCase().includes(this.searchQuery.toLowerCase())
             );
         }
     }

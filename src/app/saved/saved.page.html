@@ -6,7 +6,7 @@
   
   <ion-content>
     <ion-list>
-      <ion-item *ngFor="let exoplanet of savedExoplanets; let i = index">
+      <ion-item *ngFor="let exoplanet of savedExoplanets; let i = index" (click)="openExoplanetDetails(exoplanet)">
         <ion-label>
           <h2>{{ exoplanet.kepoi_name }}</h2>
           <p>{{ exoplanet.koi_disposition }}</p>

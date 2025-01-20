@@ -34,4 +34,10 @@ export class SavedPage implements OnInit {
       this.savedExoplanets.splice(index, 1);
       this.storageService.save('savedExoplanets', this.savedExoplanets);
     }
+
+    openExoplanetDetails(exoplanet: any): void {
+        this.router.navigate(['/exoplanet-details'], {
+            queryParams: { exoplanet: JSON.stringify(exoplanet) }
+        });
+    }
  }
